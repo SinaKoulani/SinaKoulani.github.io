@@ -9,7 +9,7 @@ const SkillCard = ({ skill }: SkillCardProps) => {
   const Icon = skillIcons[skill.icon]
 
   return (
-    <article className="group rounded-xl border border-line bg-surface p-6 shadow-lg shadow-bg/10 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:bg-surface-hover hover:shadow-accent/5">
+    <article className="group rounded-xl border border-line bg-surface p-6 shadow-lg shadow-accent/10 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:bg-surface-hover hover:shadow-xl hover:shadow-accent/15">
       <Icon
         className="text-3xl text-accent transition-all duration-300 group-hover:scale-110 group-hover:text-accent-soft"
         aria-hidden="true"

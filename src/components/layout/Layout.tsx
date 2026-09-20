@@ -7,9 +7,10 @@ const Layout = () => {
   return (
     <div className="min-h-screen">
       <ScrollToTop />
+
       <NavBar />
 
-      <div className="page-enter">
+      <div>
         <Outlet />
       </div>
 
