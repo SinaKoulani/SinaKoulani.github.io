@@ -33,9 +33,12 @@ export interface Project {
   id: string
   name: string
   description: string
+  longDescription: string
+  highlights: string[]
   techStack: string[]
   githubUrl: string
   demoUrl?: string
+  featured: boolean
 }
 
 export interface Experience {

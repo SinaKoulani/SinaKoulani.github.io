@@ -1,57 +1,65 @@
-import { Mail } from "lucide-react"
-import { FaGithub, FaInstagram, FaTelegramPlane } from "react-icons/fa"
+import { ArrowUpRight, Mail, Send } from "lucide-react"
+import { FaGithub, FaInstagram } from "react-icons/fa"
 import { socialLinks } from "../../data/portfolio"
-import Reveal from "../ui/Reveal"
+import PageHeader from "../ui/PageHeader"
 
-const socialIcons = {
+const iconMap = {
   email: Mail,
   github: FaGithub,
-  telegram: FaTelegramPlane,
+  telegram: Send,
   instagram: FaInstagram,
 }
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <Reveal>
-          <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center sm:p-12">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
-              Contact
-            </h2>
+    <section className="bg-bg-soft">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:py-24">
+        <PageHeader
+          eyebrow="Contact"
+          title="Let's Connect"
+          description="Feel free to reach out through any of the platforms below."
+        />
 
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[var(--color-text-muted)]">
-              Feel free to reach out through any of the platforms below.
-            </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {socialLinks.map((link) => {
+            const Icon = iconMap[link.icon]
 
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              {socialLinks.map((link) => {
-                const Icon = socialIcons[link.icon]
+            return (
+              <a
+                key={link.id}
+                href={link.href}
+                target={link.icon === "email" ? undefined : "_blank"}
+                rel={
+                  link.icon === "email"
+                    ? undefined
+                    : "noopener noreferrer"
+                }
+                className="group flex items-center justify-between rounded-xl border border-line bg-surface p-5 shadow-lg shadow-bg/20 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:bg-surface-hover hover:shadow-accent/5"
+              >
+                <div className="flex items-center gap-4">
+                  <Icon
+                    size={22}
+                    className="text-accent transition-all duration-300 group-hover:scale-110 group-hover:text-accent-soft"
+                    aria-hidden="true"
+                  />
 
-                return (
-                  <a
-                    key={link.id}
-                    href={link.href}
-                    target={
-                      link.href.startsWith("mailto:") ? undefined : "_blank"
-                    }
-                    rel={
-                      link.href.startsWith("mailto:") ? undefined : "noreferrer"
-                    }
-                    className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-border)] px-5 py-3 text-sm font-medium text-[var(--color-text)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-accent-hover)]"
-                  >
-                    <Icon size={18} aria-hidden="true" />
+                  <span className="font-medium text-text transition-colors duration-300 group-hover:text-accent-soft">
                     {link.label}
-                  </a>
-                )
-              })}
-            </div>
-          </div>
-        </Reveal>
+                  </span>
+                </div>
+
+                <ArrowUpRight
+                  size={19}
+                  className="text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent-soft"
+                  aria-hidden="true"
+                />
+              </a>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
 }
 
 export default Contact
-

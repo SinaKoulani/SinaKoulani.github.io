@@ -1,13 +1,23 @@
-const Footer = () => {
-  const currentYear = new Date().getFullYear()
+import { profile } from "../../data/portfolio"
+import PageHeader from "../ui/PageHeader"
 
+const About = () => {
   return (
-    <footer className="border-t border-[var(--color-border)]">
-      <div className="mx-auto max-w-6xl px-4 py-6 text-center text-sm text-[var(--color-text-muted)]">
-        © {currentYear} All rights reserved.
+    <section className="bg-bg">
+      <div className="mx-auto max-w-4xl px-4 py-20 sm:py-24">
+        <PageHeader
+          eyebrow="About Me"
+          title="A little about me"
+        />
+
+        <div className="rounded-xl border border-line bg-surface p-6 shadow-lg shadow-bg/20 sm:p-8">
+          <p className="text-base leading-8 text-muted sm:text-lg">
+            {profile.about}
+          </p>
+        </div>
       </div>
-    </footer>
+    </section>
   )
 }
 
-export default Footer;
+export default About

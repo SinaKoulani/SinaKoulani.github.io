@@ -1,19 +1,26 @@
 @import "@fontsource-variable/inter";
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #1b1613;
+  --color-bg-soft: #221c18;
+  --color-surface: #2a2320;
+  --color-surface-hover: #332a26;
+  --color-line: #3d332d;
+  --color-text: #ece3da;
+  --color-muted: #a89a8d;
+  --color-accent: #b48a72;
+  --color-accent-soft: #d2b49c;
+  --color-accent-deep: #8a6552;
+  --color-glow: rgb(180 138 114 / 0.08);
+  --color-glow-deep: rgb(138 101 82 / 0.05);
+  --color-grain: rgb(255 255 255 / 0.015);
+  --color-card-glow: rgb(180 138 114 / 0.12);
+}
+
 :root {
   color-scheme: dark;
   font-family: "Inter Variable", Inter, system-ui, sans-serif;
-
-  --color-background: #09090b;
-  --color-surface: #18181b;
-  --color-surface-hover: #27272a;
-  --color-border: #27272a;
-  --color-text: #f4f4f5;
-  --color-text-muted: #a1a1aa;
-  --color-accent: #8b5cf6;
-  --color-accent-hover: #a78bfa;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -27,8 +34,39 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background-color: var(--color-background);
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      var(--color-glow),
+      transparent 28rem
+    ),
+    var(--color-bg);
   color: var(--color-text);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(
+      circle at 15% 80%,
+      var(--color-glow-deep),
+      transparent 24rem
+    ),
+    linear-gradient(
+      var(--color-grain) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      var(--color-grain) 1px,
+      transparent 1px
+    );
+  background-size: auto, 32px 32px, 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
 }
 
 button,
@@ -38,12 +76,45 @@ a {
 
 ::selection {
   background-color: var(--color-accent);
-  color: white;
+  color: var(--color-text);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-soft);
   outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--color-line);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-deep);
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: page-enter 400ms ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -56,7 +127,11 @@ a {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    
+  }
+
+  .page-enter {
+    animation: none;
   }
 }

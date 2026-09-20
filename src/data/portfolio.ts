@@ -18,30 +18,6 @@ export const profile: Profile = {
 
 export const skills: Skill[] = [
   {
-    id: "python",
-    name: "Python",
-    description: "Building reliable applications and backend solutions.",
-    icon: "python",
-  },
-  {
-    id: "django",
-    name: "Django",
-    description: "Developing structured and scalable web applications.",
-    icon: "django",
-  },
-  {
-    id: "vue",
-    name: "Vue.js",
-    description: "Building reactive and component-based user interfaces.",
-    icon: "vue",
-  },
-  {
-    id: "nuxtjs",
-    name: "Nuxt.js",
-    description: "Building modern applications with the Vue.js ecosystem.",
-    icon: "nuxtjs",
-  },
-  {
     id: "javascript",
     name: "JavaScript",
     description: "Creating interactive and dynamic web experiences.",
@@ -64,6 +40,30 @@ export const skills: Skill[] = [
     name: "Next.js",
     description: "Building modern React applications and web experiences.",
     icon: "nextjs",
+  },
+  {
+    id: "python",
+    name: "Python",
+    description: "Building reliable applications and backend solutions.",
+    icon: "python",
+  },
+  {
+    id: "django",
+    name: "Django",
+    description: "Developing structured and scalable web applications.",
+    icon: "django",
+  },
+  {
+    id: "vue",
+    name: "Vue.js",
+    description: "Building reactive and component-based user interfaces.",
+    icon: "vue",
+  },
+  {
+    id: "nuxtjs",
+    name: "Nuxt.js",
+    description: "Building modern applications with the Vue.js ecosystem.",
+    icon: "nuxtjs",
   },
   {
     id: "tailwind",
@@ -105,39 +105,75 @@ export const skills: Skill[] = [
 
 export const projects: Project[] = [
   {
-    id: "project-one",
+    id: "e-commerce-platform",
     name: "E-Commerce Platform",
     description:
       "A modern e-commerce frontend focused on product browsing, shopping cart functionality, and a responsive user experience.",
+    longDescription:
+      "A modern e-commerce frontend designed to provide a clean shopping experience across desktop and mobile devices. The application focuses on reusable components, responsive layouts, product browsing, and a structured user interface.",
+    highlights: [
+      "Responsive product browsing experience",
+      "Reusable React components",
+      "Shopping cart interface",
+      "Responsive layout for desktop and mobile",
+    ],
     techStack: ["React", "TypeScript", "Tailwind CSS"],
     githubUrl: "https://github.com/SinaKoulani/project-one",
     demoUrl: "https://example.com/project-one",
+    featured: true,
   },
   {
-    id: "project-two",
+    id: "task-management-app",
     name: "Task Management App",
     description:
       "A responsive task management interface for organizing daily work and keeping track of progress.",
+    longDescription:
+      "A responsive task management application focused on organizing tasks and presenting progress through a simple and structured interface.",
+    highlights: [
+      "Task organization interface",
+      "Responsive design",
+      "Reusable UI components",
+      "Clear progress-focused layout",
+    ],
     techStack: ["React", "TypeScript", "CSS"],
     githubUrl: "https://github.com/SinaKoulani/project-two",
     demoUrl: "https://example.com/project-two",
+    featured: true,
   },
   {
-    id: "project-three",
+    id: "weather-dashboard",
     name: "Weather Dashboard",
     description:
       "A clean weather dashboard interface designed to present weather information in an easy-to-understand format.",
+    longDescription:
+      "A weather dashboard concept focused on presenting weather information through a clean visual hierarchy and responsive interface.",
+    highlights: [
+      "Clean weather information layout",
+      "Responsive dashboard interface",
+      "Reusable presentation components",
+      "Mobile-friendly design",
+    ],
     techStack: ["React", "TypeScript", "Tailwind CSS"],
     githubUrl: "https://github.com/SinaKoulani/project-three",
     demoUrl: "https://example.com/project-three",
+    featured: true,
   },
   {
-    id: "project-four",
+    id: "portfolio-website",
     name: "Portfolio Website",
     description:
       "A personal portfolio website showcasing projects, technical skills, experience, and contact information.",
+    longDescription:
+      "A personal portfolio website built to present projects, technical skills, experience, and contact information through a responsive multi-page interface.",
+    highlights: [
+      "Multi-page React architecture",
+      "Responsive portfolio layout",
+      "Reusable UI components",
+      "Dark mocha visual system",
+    ],
     techStack: ["React", "TypeScript", "Tailwind CSS"],
     githubUrl: "https://github.com/SinaKoulani/project-four",
+    featured: false,
   },
 ]
 

@@ -1,43 +1,52 @@
 import { experience } from "../../data/portfolio"
-import Reveal from "../ui/Reveal"
+import Badge from "../ui/Badge"
+import PageHeader from "../ui/PageHeader"
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <Reveal>
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Experience
-          </h2>
-        </Reveal>
+    <section className="bg-bg">
+      <div className="mx-auto max-w-4xl px-4 py-20 sm:py-24">
+        <PageHeader
+          eyebrow="Experience"
+          title="My Experience"
+          description="A timeline of my development journey and the technologies I have worked with."
+        />
 
-        <div className="relative mt-10 border-l border-[var(--color-border)] pl-6">
-          <div className="space-y-10">
+        <div className="relative">
+          <div
+            className="absolute bottom-0 left-3 top-0 w-px bg-line"
+            aria-hidden="true"
+          />
+
+          <div className="space-y-8">
             {experience.map((item) => (
-              <Reveal key={item.id}>
-                <article className="relative">
-                  <span className="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full bg-[var(--color-accent)]" />
+              <article
+                key={item.id}
+                className="group relative pl-10 transition-transform duration-300 hover:translate-x-1"
+              >
+                <span
+                  className="absolute left-0 top-6 h-7 w-7 -translate-y-1/2 rounded-full border-2 border-line bg-bg transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20"
+                  aria-hidden="true"
+                />
 
-                  <p className="text-sm font-medium text-[var(--color-accent-hover)]">
-                    {item.year}
-                  </p>
+                <div className="rounded-xl border border-line bg-surface p-6 shadow-lg shadow-bg/20 transition-all duration-300 group-hover:border-accent/60 group-hover:bg-surface-hover group-hover:shadow-accent/5">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <h2 className="text-xl font-semibold text-text transition-colors duration-300 group-hover:text-accent-soft">
+                      {item.title}
+                    </h2>
 
-                  <h3 className="mt-2 text-xl font-semibold text-white">
-                    {item.title}
-                  </h3>
+                    <span className="text-sm font-medium text-accent-soft">
+                      {item.year}
+                    </span>
+                  </div>
 
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {item.techStack.map((technology) => (
-                      <span
-                        key={technology}
-                        className="rounded-md border border-[var(--color-border)] px-2.5 py-1 text-xs text-[var(--color-text-muted)]"
-                      >
-                        {technology}
-                      </span>
+                      <Badge key={technology}>{technology}</Badge>
                     ))}
                   </div>
-                </article>
-              </Reveal>
+                </div>
+              </article>
             ))}
           </div>
         </div>

@@ -1,29 +1,27 @@
-import NavBar from "./components/layout/NavBar"
-import Footer from "./components/layout/Footer"
-import About from "./components/sections/About"
-import Contact from "./components/sections/Contact"
-import Experience from "./components/sections/Experience"
-import Hero from "./components/sections/Hero"
-import Projects from "./components/sections/Projects"
-import Skills from "./components/sections/Skills"
+import { Route, Routes } from "react-router-dom"
+import Layout from "./components/layout/Layout"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+import Experience from "./pages/Experience"
+import Home from "./pages/Home"
+import NotFound from "./pages/NotFound"
+import ProjectDetail from "./pages/ProjectDetail"
+import Projects from "./pages/Projects"
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
-      <NavBar />
-
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetail />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }
 
-export default App;
+export default App

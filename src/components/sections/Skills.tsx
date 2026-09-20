@@ -1,22 +1,26 @@
 import { skills } from "../../data/portfolio"
-import Reveal from "../ui/Reveal"
+import PageHeader from "../ui/PageHeader"
 import SkillCard from "../ui/SkillCard"
 
-const Skills = () => {
-  return (
-    <section id="skills" className="py-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <Reveal>
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Skills
-          </h2>
-        </Reveal>
+interface SkillsProps {
+  limit?: number
+}
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map((skill) => (
-            <Reveal key={skill.id}>
-              <SkillCard skill={skill} />
-            </Reveal>
+const Skills = ({ limit }: SkillsProps) => {
+  const visibleSkills = limit ? skills.slice(0, limit) : skills
+
+  return (
+    <section className="bg-bg-soft">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:py-24">
+        <PageHeader
+          eyebrow="Skills"
+          title="Technologies I Work With"
+          description="A collection of technologies and tools I use to build modern web experiences."
+        />
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {visibleSkills.map((skill) => (
+            <SkillCard key={skill.id} skill={skill} />
           ))}
         </div>
       </div>

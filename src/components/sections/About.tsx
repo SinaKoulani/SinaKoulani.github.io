@@ -1,24 +1,27 @@
 import { profile } from "../../data/portfolio"
-import Reveal from "../ui/Reveal"
+import PageHeader from "../ui/PageHeader"
+import TypingText from "../ui/TypingText"
 
 const About = () => {
   return (
-    <section id="about" className="py-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <Reveal>
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">
-              About
-            </h2>
+    <section className="bg-bg">
+      <div className="mx-auto max-w-4xl px-4 py-20 sm:py-24">
+        <PageHeader
+          eyebrow="About Me"
+          title="A little about me"
+        />
 
-            <p className="mt-6 text-base leading-8 text-[var(--color-text-muted)] sm:text-lg">
-              {profile.about}
-            </p>
-          </div>
-        </Reveal>
+        <div className="rounded-xl border border-line bg-surface p-6 shadow-lg shadow-bg/20 sm:p-8">
+          <p className="text-base leading-8 text-muted sm:text-lg">
+            <TypingText
+              text={profile.about}
+              speed={25}
+            />
+          </p>
+        </div>
       </div>
     </section>
   )
 }
 
-export default About;
+export default About
