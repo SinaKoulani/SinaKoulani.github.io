@@ -2,20 +2,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #1b1613;
-  --color-bg-soft: #221c18;
-  --color-surface: #2a2320;
-  --color-surface-hover: #332a26;
-  --color-line: #3d332d;
-  --color-text: #ece3da;
-  --color-muted: #a89a8d;
+  --color-bg: #161616;
+  --color-bg-soft: #1c1c1c;
+  --color-surface: #242424;
+  --color-surface-hover: #2d2d2d;
+  --color-line: #3a3a3a;
+  --color-text: #ececec;
+  --color-muted: #a1a1a1;
+
   --color-accent: #b48a72;
   --color-accent-soft: #d2b49c;
   --color-accent-deep: #8a6552;
-  --color-glow: rgb(180 138 114 / 0.08);
-  --color-glow-deep: rgb(138 101 82 / 0.05);
-  --color-grain: rgb(255 255 255 / 0.015);
-  --color-card-glow: rgb(180 138 114 / 0.12);
 }
 
 :root {
@@ -37,7 +34,7 @@ body {
   background:
     radial-gradient(
       circle at 85% 10%,
-      var(--color-glow),
+      rgb(180 138 114 / 0.06),
       transparent 28rem
     ),
     var(--color-bg);
@@ -53,16 +50,16 @@ body::before {
   background:
     radial-gradient(
       circle at 15% 80%,
-      var(--color-glow-deep),
+      rgb(180 138 114 / 0.035),
       transparent 24rem
     ),
     linear-gradient(
-      var(--color-grain) 1px,
+      rgb(255 255 255 / 0.015) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      var(--color-grain) 1px,
+      rgb(255 255 255 / 0.015) 1px,
       transparent 1px
     );
   background-size: auto, 32px 32px, 32px 32px;
@@ -76,7 +73,7 @@ a {
 
 ::selection {
   background-color: var(--color-accent);
-  color: var(--color-text);
+  color: var(--color-bg);
 }
 
 :focus-visible {
@@ -101,6 +98,21 @@ a {
   background: var(--color-accent-deep);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @keyframes page-enter {
   from {
     opacity: 0;
@@ -118,19 +130,6 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    
-  }
-
   .page-enter {
     animation: none;
   }

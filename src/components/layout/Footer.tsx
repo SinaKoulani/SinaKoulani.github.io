@@ -1,23 +1,71 @@
-import { profile } from "../../data/portfolio"
-import PageHeader from "../ui/PageHeader"
+import { ArrowUpRight } from "lucide-react"
+import { Link } from "react-router-dom"
+import { profile, socialLinks } from "../../data/portfolio"
 
-const About = () => {
+const footerLinks = [
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Experience", href: "/experience" },
+  { label: "Contact", href: "/contact" },
+]
+
+const Footer = () => {
   return (
-    <section className="bg-bg">
-      <div className="mx-auto max-w-4xl px-4 py-20 sm:py-24">
-        <PageHeader
-          eyebrow="About Me"
-          title="A little about me"
-        />
+    <footer className="border-t border-line bg-bg">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <Link
+            to="/about"
+            className="font-semibold text-text transition-colors hover:text-accent-soft"
+          >
+            {profile.name}
+          </Link>
 
-        <div className="rounded-xl border border-line bg-surface p-6 shadow-lg shadow-bg/20 sm:p-8">
-          <p className="text-base leading-8 text-muted sm:text-lg">
-            {profile.about}
+          <p className="mt-2 text-sm text-muted">
+            {profile.jobTitle}
           </p>
         </div>
+
+        <nav
+          className="flex flex-wrap gap-x-6 gap-y-3"
+          aria-label="Footer navigation"
+        >
+          {footerLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="relative text-sm text-muted transition-colors hover:text-accent-soft after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          {socialLinks.map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              target={link.icon === "email" ? undefined : "_blank"}
+              rel={
+                link.icon === "email"
+                  ? undefined
+                  : "noopener noreferrer"
+              }
+              aria-label={link.label}
+              className="group text-muted transition-colors hover:text-accent-soft"
+            >
+              <ArrowUpRight
+                size={17}
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </a>
+          ))}
+        </div>
       </div>
-    </section>
+    </footer>
   )
 }
 
-export default About
+export default Footer

@@ -31,7 +31,7 @@ const NavBar = () => {
         aria-label="Main navigation"
       >
         <NavLink
-          to="/"
+          to="/about"
           onClick={closeMenu}
           className="text-lg font-bold text-text transition-colors hover:text-accent-soft"
         >

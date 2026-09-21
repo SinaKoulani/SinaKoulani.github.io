@@ -13,6 +13,9 @@ const Home = () => {
     <main>
       <Hero />
 
+
+
+
       <Projects
         featuredOnly
         limit={3}
